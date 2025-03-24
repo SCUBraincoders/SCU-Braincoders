@@ -1,0 +1,3 @@
+Confusion Matrix for Fold3
+[[747   3]
+ [ 34 716]]

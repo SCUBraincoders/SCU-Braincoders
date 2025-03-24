@@ -1,0 +1,17 @@
+Fold1 değerlendirmesi yapılıyor
+Accuracy: 0.9807
+Precision: 0.9905
+Recall: 0.9707
+F1 Score: 0.9805
+
+Fold2 değerlendirmesi yapılıyor
+Accuracy: 0.9767
+Precision: 0.9931
+Recall: 0.9600
+F1 Score: 0.9763
+
+Fold3 değerlendirmesi yapılıyor
+Accuracy: 0.9713
+Precision: 0.9930
+Recall: 0.9493
+F1 Score: 0.9707

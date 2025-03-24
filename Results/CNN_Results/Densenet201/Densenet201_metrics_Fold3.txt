@@ -1,0 +1,5 @@
+Final Metrics for Fold3:
+Accuracy: 0.9687
+Precision: 0.9930
+Recall: 0.9440
+F1 Score: 0.9679

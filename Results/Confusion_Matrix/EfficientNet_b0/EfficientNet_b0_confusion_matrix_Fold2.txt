@@ -1,0 +1,3 @@
+Confusion Matrix for Fold2
+[[743   7]
+ [ 27 723]]

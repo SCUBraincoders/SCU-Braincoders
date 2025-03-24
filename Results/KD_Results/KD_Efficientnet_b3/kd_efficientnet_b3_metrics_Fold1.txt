@@ -1,0 +1,5 @@
+Final Metrics for Fold1:
+Accuracy: 0.9807
+Precision: 0.9972
+Recall: 0.9640
+F1 Score: 0.9803

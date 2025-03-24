@@ -1,0 +1,5 @@
+Final Metrics for Fold2:
+Accuracy: 0.9773
+Precision: 0.9904
+Recall: 0.9640
+F1 Score: 0.9770
