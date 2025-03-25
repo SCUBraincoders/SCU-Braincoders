@@ -24,7 +24,7 @@ Eğitim ve Test Ayrımı: Veriler %80 eğitim ve %20 test olacak şekilde bölü
 Ekstra Test Seti: Modelin genellenebilirliğini değerlendirmek amacıyla Kaggle üzerinden alınan harici bir test seti
 (https://www.kaggle.com/datasets/felipekitamura/head-ct-hemorrhage) ile ek test gerçekleştirilmiştir.
 
-## Veri Seti
+## Kullanılan Modeller 
 Bu çalışmada, ResNet18, ResNet50, DenseNet121, DenseNet201, InceptionV3, EfficientNetB0 ve EfficientNetB3 modelleri kullanılmıştır. Tüm modellerin öznitelik çıkarım katmanları sabit tutularak inme sınıflandırma amacına uyarlanmış, bilgi damıtma yöntemiyle öğrenci modellerin eğitilmesinde rehber olarak kullanılmıştır.
 
 Modellerin sonuna, düzleştirilmiş öznitelikler üzerine 256 nöronlu iki tam bağlantılı katman eklenmiş ve softmax aktivasyon fonksiyonu ile ikili sınıflandırma gerçekleştirilmiştir.
