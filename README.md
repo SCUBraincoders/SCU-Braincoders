@@ -63,13 +63,15 @@ python topluluk_ogrenme_inception_efficientnetb3.py
 ```
 
 # 4. KD (Knowledge Distillation) ile Eğitilen Modeller
-KD yöntemiyle eğitilen modeller arasında EfficientNetB0,
-– -Ortalama F1 skoru: 0.9797
-– -Precision: 0.9954
-– -Recall: 0.9644
-– -Doğruluk: 0.9800
+**KD Yöntemi ile En Başarılı Model:**  
+KD (Knowledge Distillation) yöntemiyle eğitilen modeller arasında **EfficientNetB0**, aşağıdaki değerlerle en yüksek genel başarıyı göstermiştir:
 
-değerleriyle en yüksek genel başarıyı göstermiştir. Bu nedenle, sınıflandırma görevleri için KD ile eğitilen EfficientNetB0 modeli önerilmektedir.
+- Ortalama F1 skoru: 0.9797  
+- Precision: 0.9954  
+- Recall: 0.9644  
+- Doğruluk: 0.9800  
+
+Bu nedenle, sınıflandırma görevleri için **KD ile eğitilen EfficientNetB0 modeli** önerilmektedir.
 
   
 # 5. Harici Veri Seti ile Test
