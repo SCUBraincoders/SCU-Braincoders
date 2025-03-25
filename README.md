@@ -26,8 +26,8 @@ Bu çalışmada, ResNet18, ResNet50, DenseNet121, DenseNet201, InceptionV3, Effi
 
 Modellerin sonuna, düzleştirilmiş öznitelikler üzerine 256 nöronlu iki tam bağlantılı katman eklenmiş ve softmax aktivasyon fonksiyonu ile ikili sınıflandırma gerçekleştirilmiştir.
 
-# 🔧Kullanım Talimatları
-1. Ortamı Hazırlama
+# 🔧Kurulum ve Kullanım Kılavuzu
+#1. Ortamı Hazırlama
 Gerekli tüm Python kütüphanelerini aşağıdaki komutla kurabilirsiniz:
 
 ```bash
@@ -35,7 +35,7 @@ pip install -r requirements.txt
 ```
 
 
-2. Model Eğitimi
+#2. Model Eğitimi
 Bu projede, ResNet18, ResNet50, DenseNet121, DenseNet201, InceptionV3, EfficientNetB0 ve EfficientNetB3 modelleri kullanılmıştır.
 Tüm modellerde, öznitelik katmanları sabit tutulmuş; ardından düzleştirme işlemi uygulanarak 256x256 boyutunda iki tam bağlantılı katman eklenmiş ve softmax aktivasyon fonksiyonu ile ikili sınıflandırma gerçekleştirilmiştir. Ayrıca, bilgi damıtma (knowledge distillation) yöntemiyle bazı modeller öğretici (teacher) olarak kullanılmıştır.
 
@@ -50,13 +50,40 @@ python EfficientNetB0_Train.py
 python EfficientNetB3_Train.py
 ```
   
-3. Topluluk Öğrenme Modelini Oluşturma
+#3. Topluluk Öğrenme Modelini Oluşturma
+En yüksek ortalama F1 skoru ve doğruluk değerlerine sahip modeller InceptionV3, EfficientNetB3 ve EfficientNetB0 olmuştur.
+Özellikle InceptionV3, tüm metriklerde en yüksek sonuçları vererek en güçlü genel performansı göstermiştir.
+Bu bağlamda, topluluk öğrenme modeli en başarılı iki model olan EfficientNetB3 + InceptionV3 kullanılarak oluşturulmuştur:
 
+```bash
+python topluluk_ogrenme_inception_efficientnetb3.py
+```
 
-4. Harici Veri Seti ile Test Etme
+#4. KD (Knowledge Distillation) ile Eğitilen Modeller
+Çizelge 3’teki sonuçlara göre, KD yöntemiyle eğitilen modeller arasında EfficientNetB0,
+– Ortalama F1 skoru: 0.9797
+– Precision: 0.9954
+– Recall: 0.9644
+– Doğruluk: 0.9800
+
+değerleriyle en yüksek genel başarıyı göstermiştir. Bu nedenle, sınıflandırma görevleri için KD ile eğitilen EfficientNetB0 modeli önerilmektedir.
 
   
-5. Örnek Çalıştırma
+#5. Harici Veri Seti ile Test
+Kaggle üzerinden elde edilen harici veri seti ile modelin genel performansını test etmek için:
+
+```bash
+python external/external_test.py
+```
+
+#6. Örnek Tahmin
+Bir "inme var" ve bir "inme yok" görüntüsü üzerinden örnek tahmin almak için:
+****
+📂 results/
+
+Kaggle'dan alınan harici bir veri seti ile de model test edilmiştir (sample klasörü).
+
+
 
 
 
