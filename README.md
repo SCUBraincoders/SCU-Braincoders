@@ -79,9 +79,17 @@ python external/external_test.py
 #6. Örnek Tahmin
 Bir "inme var" ve bir "inme yok" görüntüsü üzerinden örnek tahmin almak için:
 ****
-📂 results/
+veri setini ekle(melis)
+****
 
-Kaggle'dan alınan harici bir veri seti ile de model test edilmiştir (sample klasörü).
+# Sonuçlar
+(melis)
+
+# 🤝 Katkıda Bulunma
+Projeye katkıda bulunmak için fork alarak değişiklik yapabilir ve pull request gönderebilirsiniz.
+Hata bildirimleri ve öneriler için ise issue oluşturmanız yeterlidir.
+
+Her türlü katkı ve geri bildirim memnuniyetle karşılanır. 🙌
 
 
 
