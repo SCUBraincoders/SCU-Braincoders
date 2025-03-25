@@ -12,20 +12,20 @@ import pandas as pd
 from PIL import Image
 import gc
 
-model_name = "Densenet121"
+model_name = "KD_Efficientnet_b0"
 
 # Yol tanımlamaları
 dataset_path = r'/content/drive/MyDrive/Teknofest_Braincoders/Alt_Kumeler_Augmantasyon'
 if not os.path.exists(dataset_path):
     raise FileNotFoundError(f"Veri seti dizini bulunamadı: {dataset_path}")
 
-output_path = '/content/drive/MyDrive/Teknofest_Braincoders/Sonuclar/Confusion_Matrisler'
+output_path = '/content/drive/MyDrive/Teknofest_Braincoders/Results/Confusion_Matrix/KD_Efficientnet_b0'
 if not os.path.exists(output_path):
     raise FileNotFoundError(f"Sonuç ekleme dizini bulunamadı: {output_path}")
 
-model_path_template = '/content/drive/MyDrive/Teknofest_Braincoders/Modeller/densenet121/densenet_best_model_{fold}.pth'
+model_path_template = '/content/drive/MyDrive/Teknofest_Braincoders/Models/KD_Models/KD_Efficientnet_b0/kd_efficientnet_b0_{fold}.pth'
 
-folds = ['Fold1', 'Fold2', 'Fold3']
+folds = ['Fold1']
 
 # Cihaz seçimi
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -71,31 +71,49 @@ class StrokeDataset(Dataset):
 
 # Görüntü dönüşümleri
 transform = transforms.Compose([
-    transforms.Resize((256, 256)),
+    transforms.Resize((299, 299)),
     transforms.ToTensor(),
     transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
 ])
 
 # Modeli yükleme fonksiyonu
 def load_model(model_path):
-    model = models.densenet121(pretrained=False)
+    model = models.efficientnet_b0(pretrained=False)
+
+    # Modify classifier as needed
+    in_features = model.classifier[1].in_features
     model.classifier = nn.Sequential(
-        nn.Linear(model.classifier.in_features, 256),
+        nn.Linear(in_features, 256),
         nn.ReLU(),
         nn.Linear(256, 256),
         nn.ReLU(),
-        nn.Linear(256, 2)  # 2 sınıf (Inme-Yok, Inme-Var)
+        nn.Linear(256, 2)  # 2 classes: Inme-Yok, Inme-Var
     )
 
-    # Kaydedilen model state_dict'ini yükle
+    # Load the saved state_dict
     state_dict = torch.load(model_path, map_location=device)
 
-    # Eğer state_dict içinde "densenet." öneki varsa, düzelt
-    if any(key.startswith("densenet.") for key in state_dict.keys()):
-        new_state_dict = {k.replace("densenet.", ""): v for k, v in state_dict.items()}
-        model.load_state_dict(new_state_dict)
-    else:
-        model.load_state_dict(state_dict)
+    # Remove the "model." prefix from state_dict keys (or any other prefix)
+    state_dict = {k.replace("model.", ""): v for k, v in state_dict.items()}
+
+    # Filter out keys that don't match the current model architecture
+    model_state_dict = model.state_dict()
+
+    # Create a new state_dict that only contains the matching layers
+    filtered_state_dict = {k: v for k, v in state_dict.items() if k in model_state_dict}
+
+    # Load the matching state_dict into the model
+    model_state_dict.update(filtered_state_dict)
+
+    try:
+        # Now load the filtered state_dict into the model
+        model.load_state_dict(model_state_dict, strict=True)
+    except RuntimeError as e:
+        print(f"Error loading model state dict: {e}")
+        # You can also print the keys to debug
+        print("Mismatch in keys, here are the mismatched layers:")
+        print(f"Loaded keys: {list(state_dict.keys())}")
+        print(f"Expected keys: {list(model_state_dict.keys())}")
 
     model.to(device)
     model.eval()
@@ -120,7 +138,7 @@ def evaluate_and_save_confusion_matrix(model, dataloader, fold_name, output_path
 
     # Confusion Matrix görselleştir
     plt.figure(figsize=(6, 4))
-    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=class_names, yticklabels=class_names)
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=class_names, yticklabels=class_names, annot_kws={"size": 35})
     plt.xlabel('Tahmin Edilen')
     plt.ylabel('Gerçek')
     plt.title(f'Confusion Matrix - {fold_name}')
