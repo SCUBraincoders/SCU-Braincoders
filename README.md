@@ -1,7 +1,7 @@
 # SCU-Braincoders
 Bu proje kapsamında, Teknofest 2021 tarafından sağlanan inme (stroke) veri seti kullanılarak iki sınıflı bir veri seti (inme var / inme yok) oluşturulacaktır. Projenin temel amacı, transfer öğrenme temelli farklı derin öğrenme modellerinin bu veri seti üzerinde performansını değerlendirmek ve en başarılı iki modelin çıktılarından yararlanarak topluluk öğrenme (ensemble learning) yaklaşımı ile daha güçlü ve kararlı bir sınıflandırma modeli geliştirmektir. Bu sayede inme tanısında yapay zekâ tabanlı karar destek sistemlerinin doğruluk ve güvenilirliğinin artırılması hedeflenmektedir.
 
-# Veri Seti
+###	 Veri Seti
 Kaynak: T.C. Sağlık Bakanlığı (2021) inme verisi
 (https://acikveri.saglik.gov.tr/Home/DataSetDetail/1)
 
