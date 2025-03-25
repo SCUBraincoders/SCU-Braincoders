@@ -34,7 +34,7 @@ Modellerin sonuna, düzleştirilmiş öznitelikler üzerine 256 nöronlu iki tam
 Gerekli tüm Python kütüphanelerini aşağıdaki komutla kurabilirsiniz:
 
 ```bash
-pip install -r requirements.txt
+kod
 ```
 
 
@@ -44,13 +44,7 @@ Tüm modellerde, öznitelik katmanları sabit tutulmuş; ardından düzleştirme
 
 Aşağıdaki komutlarla modelleri ayrı ayrı eğitebilirsiniz:
 ```bash
-python ResNet18_Train.py
-python ResNet50_Train.py
-python DenseNet121_Train.py
-python DenseNet201_Train.py
-python InceptionV3_Train.py
-python EfficientNetB0_Train.py
-python EfficientNetB3_Train.py
+kod
 ```
   
 ### 3. Topluluk Öğrenme Modelini Oluşturma
