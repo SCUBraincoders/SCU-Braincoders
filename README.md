@@ -59,6 +59,7 @@ En yüksek ortalama F1 skoru ve doğruluk değerlerine sahip modeller InceptionV
 Bu bağlamda, topluluk öğrenme modeli en başarılı iki model olan EfficientNetB3 + InceptionV3 kullanılarak oluşturulmuştur:
 
 ```bash
+kod
 ```
 
 ### 4. KD (Knowledge Distillation) ile Eğitilen Modeller
@@ -77,6 +78,7 @@ Bu nedenle, sınıflandırma görevleri için **KD ile eğitilen EfficientNetB0 
 Kaggle üzerinden elde edilen harici veri seti ile modelin genel performansını test etmek için:
 
 ```bash
+kod
 ```
 
 ### 6. Örnek Tahmin
