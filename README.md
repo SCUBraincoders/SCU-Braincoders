@@ -26,7 +26,7 @@ Bu çalışmada, ResNet18, ResNet50, DenseNet121, DenseNet201, InceptionV3, Effi
 
 Modellerin sonuna, düzleştirilmiş öznitelikler üzerine 256 nöronlu iki tam bağlantılı katman eklenmiş ve softmax aktivasyon fonksiyonu ile ikili sınıflandırma gerçekleştirilmiştir.
 
-#Kullanım Talimatları
+#🔧Kullanım Talimatları
 1. Ortamı Hazırlama
 Gerekli tüm Python kütüphanelerini aşağıdaki komutla kurabilirsiniz:
 
@@ -36,7 +36,19 @@ pip install -r requirements.txt
 
 
 2. Model Eğitimi
+Bu projede, ResNet18, ResNet50, DenseNet121, DenseNet201, InceptionV3, EfficientNetB0 ve EfficientNetB3 modelleri kullanılmıştır.
+Tüm modellerde, öznitelik katmanları sabit tutulmuş; ardından düzleştirme işlemi uygulanarak 256x256 boyutunda iki tam bağlantılı katman eklenmiş ve softmax aktivasyon fonksiyonu ile ikili sınıflandırma gerçekleştirilmiştir. Ayrıca, bilgi damıtma (knowledge distillation) yöntemiyle bazı modeller öğretici (teacher) olarak kullanılmıştır.
 
+Aşağıdaki komutlarla modelleri ayrı ayrı eğitebilirsiniz:
+```bash
+python ResNet18_Train.py
+python ResNet50_Train.py
+python DenseNet121_Train.py
+python DenseNet201_Train.py
+python InceptionV3_Train.py
+python EfficientNetB0_Train.py
+python EfficientNetB3_Train.py
+```
   
 3. Topluluk Öğrenme Modelini Oluşturma
 
