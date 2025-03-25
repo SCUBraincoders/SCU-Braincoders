@@ -30,9 +30,10 @@ Modellerin sonuna, düzleştirilmiş öznitelikler üzerine 256 nöronlu iki tam
 1. Ortamı Hazırlama
 Gerekli tüm Python kütüphanelerini aşağıdaki komutla kurabilirsiniz:
 
-bash
-Kopyala
-Düzenle
+```bash
+pip install -r requirements.txt
+```
+
 
 2. Model Eğitimi
 
