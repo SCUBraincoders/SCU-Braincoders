@@ -83,7 +83,7 @@ veri seti(melis)
 
 ## Sonuçlar
 (melis)
-kodları düzenle
+kodlar
 
 ## 🤝 Katkıda Bulunma
 Projeye katkıda bulunmak için fork alarak değişiklik yapabilir ve pull request gönderebilirsiniz.
